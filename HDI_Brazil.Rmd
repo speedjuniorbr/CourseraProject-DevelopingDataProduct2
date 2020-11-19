@@ -1,0 +1,54 @@
+---
+title: "Human Development Index and Gross National Income relation in Brazil"
+author: "Expedito Pinto de Paula Junior"
+date: "11/18/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Overview
+
+The objective of this presentation is plot HDI (Human Development Index) Education Index and HDI GNI (Gross National Income) Index in all cities in Brazil. 
+
+## HDI Education Index VS HDI GNI Index in all cities in Brazil
+
+```{r plot1, message=FALSE, warning=FALSE}
+library(plotly)
+library(ggplot2)
+brcities <- read.csv("BRAZIL_CITIES.csv", header = TRUE, sep = ";")
+fig <- plot_ly(brcities,x=~IDHM_Educacao, y=~IDHM_Renda, type = "scatter", color = ~STATE, mode = "markers", marker = list(opacity = 0.7) ,text = ~paste("City:", CITY))
+fig
+```
+
+## HDI Education Index VS HDI GNI Index in all cities in Brazil
+
+```{r plot2, message=FALSE, warning=FALSE}
+
+fig2 <- plot_ly(brcities,x=~IDHM_Educacao, y=~IDHM_Renda, type = "scatter", color = ~CAPITAL, mode = "markers", marker = list(opacity = 0.5), text = ~paste("City:", CITY))
+fig2
+
+
+```
+
+
+## Some Findings
+
+### The 5 best cities in relation btw HDI and GNI are: 
+     1. São Caetano do Sul
+     2. Niterói
+     3. Vitoria
+     4. Florianópolis
+     5. Santos
+
+### The 5 Best Capitals in relation btm HDI and GNI are:
+     1. Vitória
+     2. Florianópolis
+     3. Brasilia
+     4. Curitiba
+     5. Belo Horizonte
+
+
+
